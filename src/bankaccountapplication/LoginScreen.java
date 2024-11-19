@@ -11,7 +11,8 @@ public class LoginScreen extends javax.swing.JFrame {
  
 
 
-    
+    NewAccountScreen newAccount = new NewAccountScreen();
+    BankAccount newBankAccount = new BankAccount();
     
 // Creates new form LoginScreen
     public LoginScreen() {
@@ -101,7 +102,7 @@ public class LoginScreen extends javax.swing.JFrame {
     this.setVisible(false);
     }//GEN-LAST:event_LoginBackButtonActionPerformed
     public LoginScreen(List<BankAccount> accounts) {
-        this.accounts = accounts;
+        newAccount.accounts = accounts;
         initComponents();
     }
     private void LogInButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogInButtonActionPerformed
@@ -111,8 +112,8 @@ public class LoginScreen extends javax.swing.JFrame {
         // Hash the input password
         String hashedInputPassword = hashPassword(password);
 
-        for (BankAccount account : accounts) {
-            if (account.getUsername().equals(username) && 
+        for (BankAccount account : newAccount.accounts) {
+            if (newBankAccount.getUserName().equals(username) &&
     account.getPassword().equals(hashedInputPassword)) {
     // Login successful, proceed to main application
     // ... (e.g., open a new window, switch panels)
@@ -130,19 +131,20 @@ private static String hashPassword(String password) {
     try {
         MessageDigest digest = MessageDigest.getInstance("SHA-256");
         byte[] hashedBytes = digest.digest(password.getBytes());
+        ;
 
         // ... (convert hashedBytes to a string representation)
     } catch (NoSuchAlgorithmException e) {
         // Handle exception
     }
-
+    return password;
 }
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {

@@ -12,7 +12,7 @@ import java.io.IOException;
 
 public class NewAccountScreen extends javax.swing.JFrame {
 
-   private List<BankAccount> accounts = new ArrayList<>();
+   public List<BankAccount> accounts = new ArrayList<>();
     public NewAccountScreen() {
         initComponents();
     }
